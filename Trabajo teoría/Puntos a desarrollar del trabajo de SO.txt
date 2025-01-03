@@ -1,0 +1,6 @@
+• Características generales del SO.
+• Breve historia.
+• Versiones del SO.
+• Visión general de la estructura interna del sistema
+• Visión general del aspecto de la(s) API(s) proporcionadas por el SO.
+• Interfaces de usuario proporcionadas por el SO

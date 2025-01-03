@@ -1,0 +1,28 @@
+1.Caracteristicas generales del SO:
+
+https://fp.uoc.fje.edu/blog/caracteristicas-de-linux-sistema-operativo-codigo-abierto/
+
+https://www.hostingplus.cl/blog/cuales-son-las-caracteristicas-de-linux/
+
+
+	VENTAJAS E INCONVENIENTES DE LINUX:
+
+https://www.ionos.es/digitalguide/servidores/know-how/linux-vs-windows-el-gran-cuadro-comparativo/
+
+https://linux.ciberaula.com/articulo/ventajas_inconvenientes_linux/
+
+https://ventajas.blog/desventajas-y-ventajas-de-linux/
+
+
+
+
+
+
+2.Interfaces de usuario proporcionadas por el SO:
+
+https://wiki.vitalinux.educa.aragon.es/index.php/Interfaces_de_usuario_gráficas_y_de_línea_de_comandos
+
+https://es.scribd.com/document/552499599/2-1-Las-Interfaces-en-Linux
+
+https://bimmcp.wordpress.com/2017/02/11/linux-y-sus-poderosas-interfaces-graficas/
+
