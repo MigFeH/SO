@@ -1,0 +1,9 @@
+30
+5
+NOP
+ADD 10 -13
+TRAP 2
+//OS 6 // Exception Interrupt
+WRITE 15
+//IRET
+TRAP 3
