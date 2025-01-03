@@ -1,0 +1,63 @@
+hacer lo 5 primeros ejercicios
+
+mas alto el numero => menor prioridad
+
+
+control+shift+f para buscar una cadena en todo el PROYECTO
+
+la funcion con la que imprimimos los debugmessage:
+	primer param: si yo quiero que me imprima el tick de reloj o si no quiero
+	
+
+vamos por el tercero
+no lo ejecuta dos veces porque tiene un halt
+
+
+TRAP x: realiza una llamada al servicio x del SO
+	Servicio 3 [SYSCALL_END]: indicamos que la ejecucion de un 	programa ha finalizado
+	
+	Sevicio 5 [SYSCALL_PRINTEXECPID]: ni idea de que hace
+
+
+el tamaño maximo de la tabla de procesos es de 4
+
+si solo le pasamos un programa que no existe, el SIP hace bucle infinito
+
+
+programVerySimple
+prog-V1-E3
+------------------------------------------------------------------------------------------------------------
+
+Entrar en funcion: control + click izquierdo
+Volver atras: alt + flecha izquierda
+Volver adelante: alt + flecha derecha
+Buscar, por ejemplo una variable en todo el proyecto: Control + p + #nombreLoQueQueremosBuscar
+
+ej 6:
+Porque con tamaño 65 estamos superando el tamaño maximo de seccion de memoria definido por la constante MAINMEMORYSECTIONSIZE (en OperatingSystem.c) con un valor de 60.
+Luego, el programa prog-V1-E6 no se carga y solo se ejecuta el SIP dando lugar a un bucle infinito.
+
+Cuando cambiamos el valor de 65 a 50 el tamaño que estamos definiendo para el programa entra en el limite de tamaño de seccion de memoria antes mencionado
+dando lugar a una correcta carga del programa y que no se produzca el bucle infinito con el SIP.
+
+------------------------------------------------------------------------------------------------------------
+
+ej 13:
+a) Porque dichos estados van a ser reemplazados por otros cargados desde el PCB del proceso que va a ocupar la CPU en un cambio de proceso.
+b) Sí, habría que salvar todos los registros del procesador porque contienen los datos con los que opera el proceso en un momento determinado de su ejecución (como el acumulador).
+c) Sí, porque tenemos que cargar tambien el valor del registro acumulador que tiene que ser salvado en el PCB de un proceso.
+d) Sí, afectaría a la definición del PCB de tal forma que almacenaría una copia del valor del registro acumulador.
+También se vería afectada la implementación de la sección de código en OperatingSystem.c que inicializa los valores del PCB inicializando tambien la copia del registro acumulador.
+También se vería afectada la implementación del OperatingSystem_SaveContext y OperatingSystem_RestoreContext para que guarde y restaure las copias del registro mencionado.
+
+No guardamos los registros de proposito general (A y B) porque, a diferencia del registro acumulador, son registros "temporales" que almacenan datos de una instrucción que está siendo computada en tiempo de ejecución al contrario que el registro acumulador que sí almacena valores a lo largo de una ejecución de un programa.
+
+
+ej 15:
+Al llamar al manejador de la interrupción 6 sin haberse provocado antes una excepción, el programa que se estaba ejecutando simplemente se expulsa de la CPU.
+
+b) El modo protegido se activa cuando se ejecuta una instrucción TRAP y se desactiva cuando de ejecuta una instrucción IRET
+
+
+
+

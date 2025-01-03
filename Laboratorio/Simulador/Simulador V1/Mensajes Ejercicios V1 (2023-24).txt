@@ -1,0 +1,68 @@
+Ejercicio 1:
+
+User program list: 
+<tab>Program [ejemplo1] with arrival time [0]
+
+Ejercicio 4:
+
+ERROR: There are not free entries in the process table for the program [nombrePrograma]
+
+Ejercicio 5:
+
+ERROR: Program [nombrePrograma] is not valid [--- it does not exist ---]
+ERROR: Program [nombrePrograma] is not valid [--- invalid priority or size ---]
+
+Ejercicio 6:
+
+// prog-V1-E6
+65
+2
+READ 20
+ZJUMP 7
+SHIFT 1
+ZJUMP 2
+JUMP -2
+TRAP 3
+NOP
+JUMP -1
+TRAP 3
+
+ERROR: Program [nombrePrograma] is too big
+
+Ejercicio 9:
+
+Ready-to-run processes queue: 
+<tab>[1,0], [3,2], [0,100]
+
+Ejercicio 10:
+
+char * statesNames [5]={"NEW","READY","EXECUTING","BLOCKED","EXIT"};
+
+Process [2 - progName] moving from the [READY] state to the [EXECUTING] state
+
+Process [2] created into the [NEW] state, from program [progName]
+
+Ejercicio 11:
+
+// In OperatingSystem.h
+// #define NUMBEROFQUEUES 1
+#define NUMBEROFQUEUES 2
+enum TypeOfReadyToRunProcessQueues { USERPROCESSQUEUE, DAEMONSQUEUE};
+
+// In OperatingSystem.c
+// int numberOfReadyToRunProcesses[0]={0};
+int numberOfReadyToRunProcesses[NUMBEROFQUEUES]={0,0};
+char * queueNames [NUMBEROFQUEUES]={"USER","DAEMONS"};
+
+int queueID;
+
+Ready-to-run processes queues:
+<tab>USER: [1,0], [3,2]
+<tab>DAEMONS: [0,100]
+
+Ejercicio 12:
+
+Process [1 - progName1] will transfer the control of the processor to process [3 – progName2]
+
+Process [1 - progName1] cannot transfer the control of the processor to any process
+
