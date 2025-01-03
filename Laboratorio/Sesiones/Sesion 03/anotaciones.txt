@@ -1,0 +1,16 @@
+abrir explorador de archivos del actual en wsl: explorer.exe . (con el . nos referimos al directorio actual)
+
+code . (con el . nos referimos al directorio actual): nos abre una nueva ventana del visual studio code con la configuracion actual
+
+con el whereis miramos donde estan instaladas las herramientas externas
+
+PARA COPIAR CON EL CP ES IMPORTANTE HACERLO CON EL -r
+
+compilar para depurar (con la opcion -g de cc):
+	gcc -g hello.c
+	Depuramos con gdb nombreDelEjecutable
+
+
+
+
+ 

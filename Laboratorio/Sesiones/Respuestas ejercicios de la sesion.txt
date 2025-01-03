@@ -1,0 +1,618 @@
+EJERCICIOS DEL APARTADO 1:
+
+3. Obtén ayuda de las siguientes órdenes: man, passwd, apropos, help, info, type.
+
+	man man
+	man passwd
+	man apropos
+	man help / apropos help / info help
+	man info
+	man type / apropos type / info type
+
+4. ¿Qué fichero se ejecuta cuando introducimos la orden man?
+	
+	Usamos la orden type man.
+
+	Se ejecuta el fichero /usr/bin/man.
+
+5. ¿Con qué orden obtengo información sobre las órdenes internas del shell? ¿Cómo se utiliza?
+
+	Con la orden help.
+	Escribes help <instruccion> y te muestra la ayuda relevante a esa instrucción sea interna o externa (hace uso del man de forma indirecta para ello) a shell
+
+6. ¿Con qué orden obtengo información sobre órdenes externas? ¿Cómo se utiliza?
+
+	Con la orden man.
+	Escribes man <instruccion> y te muestra la ayuda relevante a esa instrucción siempre que sea externa a shell
+
+7. ¿Cómo puedo saber que ordenes he introducido en el bash últimamente?
+
+	Con la orden history.
+
+8. ¿Cómo puedo ejecutar una orden que aparece en el historial?
+
+	Con !numeroDeLaInstruccionEnumeradaEnElHistory
+
+9. Quiero visualizar un fichero que se llama Nombredeficheromuylargodenarices. Sólo tengo en el directorio actual ese fichero que comience por N. Indique cómo puedo introducir el nombre de fichero con solo dos pulsaciones de teclado.
+
+	cat N <tab> <tab> (con las dos tabulaciones el sistema autocompleta el nombre poniendo Nombredeficheromuylargodenarices.txt)
+
+10. Repite la última orden introducida, utilizando las facilidades del shell. Obtén ayuda de la orden history (¿es interna o externa? Averígualo).
+
+	Repetir la última orden introducida: flecha de direccion arriba y enter. O escribiendo !! para ejecutar la ultima instrucción registrada en el history.
+
+	Obtener ayuda de la orden history: como es una orden interna de shell usamos la orden help history (tambien funciona con man history).
+
+	Averiguar si es la orden history interna o externa: usamos la orden type history y nos dice que es una orden interna de shell.
+
+11. Utilizando las facilidades del shell, averigua qué órdenes externas comienzan con la letra p. ¿Cuántas por pa? ¿Y por pas?
+
+	Ordenes extermas que comienzan por la letra p: p <tab> <tab>
+
+	Ordenes extermas que comienzan por la letra pa: pa <tab> <tab>
+	Ordenes extermas que comienzan por la letra pas: pas <tab> <tab>
+
+12. ¿Cómo puedo repetir la ultima orden que he introducido, si estoy utilizando el bash como shell?
+
+	Tecleando solo !!
+
+13. ¿Con qué orden puedo saber si una orden es interna o externa del shell? ¿Cómo se utiliza?
+
+	Mediante la orden type.
+	Tecleas type <orden> y te dice si es interna o externa.
+
+14. Para qué sirve la orden whatis?
+
+	Permite buscar el nombre de la instruccion de la que le hacemos el whatis dentro de la pagina del man. También nos permite buscar las ordenes externas de shell mediante palabras comodin con la opcion -w.
+
+15. ¿Qué opción del man hace que funcione de manera similar a la orden apropos?
+
+	man -k
+
+16. Consulta la página del man de la orden history para estudiar las distintas posibilidades que ofrece y averigua cómo puedes:
+
+	a. Ejecutar la última orden introducida (sin usar la ).
+	b. Ejecutar la orden que introdujiste hace 6 órdenes.
+	c. Ejecutar la última orden que introdujiste que comenzaba por “hi”.
+
+	Consultar la página del man de la orden history: tecleamos la instruccion man history.
+
+	a: Tecleando !!
+	b: Tecleando !-6
+	c: Tecleando !hi
+
+----------------------------------------------------------------
+EJERCICIOS DEL APARTADO 2:
+
+1. Vete al directorio raíz y utiliza la orden cd de la manera más sencilla posible para volver a tu directorio de trabajo.
+
+	Para ir al directorio raíz: cd /
+	Para volver a mi directorio de trabajo: cd
+
+2. Sitúate en el directorio /etc y accede a uno de los ficheros situados en el directorio de trabajo propio utilizando el camino, ruta de acceso o pathname de las dos formas posibles: absoluta y relativa.
+
+	Situarme en el directorio /etc: cd /etc (ruta absoluta)
+	
+	Forma absoluta (desde la raiz /): cat /home/students/UO287577/prueba/Nombredeficheromuylargodenarices.txt
+	Forma relativa (desde el directorio actual): cat ../home/students/UO287577/prueba/Nombredeficheromuylargodenarices.txt
+
+3. Sitúate en el directorio raíz. Comprueba qué contenido tiene. Comprueba si existen directorios.
+
+	Situarme en el direcotio raíz: cd /
+
+	Comprobar qué contenido tiene: ls -l
+	Comprobar si existen directorios: ls -l (primera letra una d -> directorio)
+
+4. Crea un fichero que sea accesible a través de dos nombres diferentes. Comprueba que aparece un 2 en la segunda columna, indicando con ello que existen dos nombres para el mismo fichero. Comprueba que efectivamente se trata de un sólo fichero, modificando desde uno de ellos y comprobando desde el otro que ha sido modificado.
+
+	Para ello creo un enlace simbólico para el fichero Nombredeficheromuylargodenarices.txt llamado Nombredeficherolargo.txt mediante la orden:
+		ln -s Nombredeficheromuylargodenarices.txt Nombredeficherolargo.txt
+
+	Comprobar que aparece un 2 en la segunda columna: ejecutar la orden ls -l y mirar que para el link hay un -> referenciando al fichero que linkea
+
+	Comprobar que se trata de un solo fichero: cambiamos la info desde el link y comprobamos que el fichero "original" también ha sido modificado
+
+5. Crea un fichero de prueba para modificarle los permisos, por ejemplo que contenga el listado de los ficheros del directorio (para realizar eso únicamente debes añadir "> nombreFichero", sin las comillas, a cualquier orden; esto creará un fichero que contendrá la salida de la orden).
+
+	Creamos el fichero de prueba con el listado de ficheros del directorio: ls > listadoFicheros.txt
+
+6. Comprueba los permisos actuales y haz que sólo el propietario pueda leerlo.
+
+	Comprobar permisos actuales: ls -l listadoFicheros.txt
+	Permisos actuales:
+		Propietario: lectura y escritura
+		Grupo: lectura
+		Otros: lectura
+
+	Hacer que sólo el propietario pueda leerlo:
+		Formato ugo:
+			chmod go-r listadoFicheros.txt
+		
+		Formato octal (4 read, 2 write, 1 execute):
+			chmod 600 listadoFicheros.txt
+
+7. Crear un directorio de prueba. Copia algunos ficheros a su interior. Modifica sus permisos de éste para que sólo el propietario pueda leerlo. Intenta situarte en él. ¿Puedes? ¿Por qué?. Intenta ver su contenido. ¿Puedes? ¿Por qué?
+
+	Crear directorio de prueba llamado prueba2: mkdir prueba2
+
+	Copiar algunos ficheros a su interior:
+		cd prueba
+		cp Nombredeficheromuylargodenarices.txt Nombredeficheromuylargodenarices2.txt
+		mv Nombredeficheromuylargodenarices2.txt /home/students/UO287577/prueba2 (ruta absoluta (desde el directorio raiz (/) sin importar el directorio actual))
+		
+	Modificar los permisos del directorio para que sólo el propietario pueda leerlo:
+		Formato ugo:
+			chmod go-r prueba2
+		
+		Formato octal (4 read, 2 write, 1 execute):
+			chmod 711 prueba2
+
+	Intenta situarte en él. ¿Puedes? ¿Por qué?.
+
+		Situarme en él: cd prueba2
+		
+		Puedo situarme en él porque el propietario (yo) además de tener permiso de lectura sobre el directorio prueba2, tengo tambien el permiso de ejecución, el cual me permite acceder a dicho directorio.
+
+	Intenta ver su contenido. ¿Puedes? ¿Por qué?
+
+		Ver su contenido: ls prueba2
+
+		Puedo ver su contenido porque el propietario (yo) tiene el permiso de lectura sobre dicho directorio.
+
+8. Cambia los permisos del directorio anterior para que sólo el propietario pueda acceder a él. Intenta situarte en él. ¿Puedes? ¿Por qué?. Intenta ver su contenido. ¿Puedes? ¿Por qué?
+
+	Cambiar los permisos del directorio prueba2 para que sólo el propietario pueda acceder a él:
+		Formato ugo:
+			chmod go-x prueba2
+
+		Formato octal (4 read, 2 write, 1 execute):
+			chmod 700 prueba2
+	
+	Intenta situarte en él. ¿Puedes? ¿Por qué?
+
+		Situarme en él: cd prueba2
+
+		Puedo situarme en el porque sólo el propietario (yo) puede acceder a dicho directorio.
+
+	Intenta ver su contenido. ¿Puedes? ¿Por qué?
+
+		Ver su contenido: ls prueba2
+
+		Puedo ver su contenido porque el propietario (yo) tiene el permiso de lectura sobre ese directorio
+
+9. Indica la expresión regular que hay que introducir para referirnos a todos los ficheros cuyo nombre contenga tres caracteres, siendo el primero necesariamente una letra (mayúscula o minúscula).
+
+	Expresión regular: [A-Za-z]??
+
+10. Indica la expresión regular que hay que introducir para referirnos a todos los ficheros cuyo nombre contenga un "." en cualquier posición a excepción de la primera.
+
+	Expresión regular: [!.]*.*
+
+11. Inspeccionar el contenido de algunos ficheros. Pueden ser interesantes ficheros como el /etc/passwd y el /etc/group. Averigua, a partir de los ficheros anteriores, el número de usuario, número de grupo y nombre de grupo correspondiente a cada usuario.
+
+	cat /etc/passwd
+	cat /etc/group
+
+12. Ve a tu directorio HOME. Mira cuántos enlaces tiene. Crea un directorio dentro de él. Comprueba cuántos enlaces tiene ahora tu directorio HOME. ¿Por qué ha cambiado así?
+
+	Ir a MI directorio HOME: cd
+
+	Mirar cuantos enlaces tiene: ls -ld (El número de enlaces está entre el nombre del propietario y los permisos. Tiene 7 enlaces)
+
+	Crear un directorio dentro de HOME: mkdir prueba3
+
+	Mirar cuantos enlaces tiene: ls -ld (Tiene 8 enlaces)
+
+	Ha aumentado el número de enlaces porque, al crear un nuevo directorio, se crea un enlace en el sistema de ficheros para acceder al directorio creado
+
+13. Busca mediante la ayuda los tipos de ficheros que puedan aparecer como primer campo del ls.
+
+	info ls
+	
+	Pueden aparecer:
+		- (guión): Indica un archivo regular.
+		
+		d (directorio): Indica un directorio.
+		
+		l (enlace simbólico): Indica un enlace simbólico.
+		
+		c (carácter especial): Indica un archivo de caracteres (por ejemplo, dispositivos de entrada/salida).
+		
+		b (bloque especial): Indica un archivo de bloques (por ejemplo, dispositivos de almacenamiento).
+
+
+     ‘-’
+          regular file
+     ‘b’
+          block special file
+     ‘c’
+          character special file
+     ‘C’
+          high performance (“contiguous data”) file
+     ‘d’
+          directory
+     ‘D’
+          door (Solaris 2.5 and up)
+     ‘l’
+          symbolic link
+     ‘M’
+          off-line (“migrated”) file (Cray DMF)
+     ‘n’
+          network special file (HP-UX)
+     ‘p’
+          FIFO (named pipe)
+     ‘P’
+          port (Solaris 10 and up)
+     ‘s’
+          socket
+     ‘?’
+          some other file type
+
+14. Indica la expresión regular que hay que introducir para referirnos a todos los ficheros cuyo nombre comience por "a" y terminen por un dígito.
+
+	a*[0-9]
+
+15. Indica la expresión regular que hay que introducir para referirnos a todos los ficheros cuyo nombre no termine por ".c".
+
+	*[!.c]
+
+16. Indica la expresión regular que hay que introducir para referirnos a todos los ficheros cuyo nombre tenga al menos 2 caracteres.
+
+	??*
+
+17. Inspeccionando los ficheros que tengo en mi directorio me he encontrado con que tengo uno que se llama "." y otro "..". Yo no los he creado y no sé lo que significan. ¿Quién los ha creado, y qué utilidad tienen?
+
+	El directorio "." representa el directorio actual en el que uno se encuentra. El directorio ".." representa el directorio padre del directorio en el que te encuentras. Estos directorios son creados por el SO y son usados para la navegación por el sistema de ficheros
+
+18. Ve al directorio /dev y comprueba que contiene ficheros de tipo "dispositivo". Comprobar también que se da información acerca del número mayor y menor justo antes de la fecha de modificación.
+
+	El primer carácter es 'c' (carácter especial) (Indica un archivo de caracteres (por ejemplo, dispositivos de entrada/salida)) o 'b' (bloque especial) (Indica un archivo de bloques (por ejemplo, dispositivos de almacenamiento)).
+
+	Usamos la orden ls -Slah (la S ordena por el tamaño del archivo, la h hace que sea mas legible al humano poniendo magnitudes de peso para los tamaños como K, G, etc)
+
+	Contiene dichos ficheros.
+
+	Se muestra el número mayor y menor, son los dos valores anteriores a la fecha de modificación. Donde para otro tipo de fichero iría representado el tamaño de dicho fichero.
+
+19. ¿Para qué sirve la orden df? ¿ Cómo se utiliza?
+
+	Nos informa de la situación de los discos que están montados, en qué directorios estan montados (puntos de montaje), el tamaño que ocupan y su capacidad.
+
+	MUESTRA EL ESPACIO USADO EN EL DISCO.
+
+	Se usa de la siguiente forma: df
+
+20. ¿Para qué sirve la orden mount? ¿ Cómo se utiliza?
+
+	Muestra los discos que están montados y dónde están montados.
+
+	Se usa de la siguiente forma: mount
+
+21. ¿Para qué sirve la orden quota? ¿ Cómo se utiliza?
+
+	Muestra la quota máxima de espacio a poder ser ocupada en un disco por un usuario.
+
+	Se usa de la siguiente forma: quota
+
+22. ¿Qué permisos necesito tener para poder crear un fichero? Indica todos aquellos que sean necesarios, tanto del fichero como del directorio al que pertenezca.	
+
+	Directorio: escritura y ejecución
+
+	Fichero: escritura
+
+23. ¿Qué permisos necesito tener para poder ejecutar un fichero (se supone que contiene código ejecutable)? Indica todos aquellos que sean necesarios, tanto del fichero como del directorio al que pertenezca.
+
+	Directorio: ejecución 
+
+	Fichero: ejecución y lectura (el contenido va a ser accedido para ser ejecutado)
+
+24. ¿Qué permisos necesito tener para poder eliminar un fichero? Indica todos aquellos que sean necesarios, tanto del fichero como del directorio al que pertenezca.
+
+	Directorio: ejecución y escritura
+
+	Fichero: escritura (su contenido va a ser suprimido)
+
+25. ¿Qué permisos necesito tener para poder leer un fichero? Indica todos aquellos que sean necesarios, tanto del fichero como del directorio al que pertenezca.
+
+	Directorio: ejecución
+
+	Fichero: lectura
+
+26. ¿Qué permisos necesito tener para poder modificar un fichero? Indica todos aquellos que sean necesarios, tanto del fichero como del directorio al que pertenezca.
+
+	Directorio: ejecución
+
+	Fichero: escritura
+
+27. Quiero borrar todos los ficheros del directorio actual. Suponiendo que tengo los permisos necesarios, ¿cómo puedo hacerlo?
+
+	rm *
+
+28. Quiero borrar un directorio "d1", perteneciente al directorio actual, y todo su contenido. Suponiendo que tengo los permisos necesarios, ¿cómo puedo hacerlo mediante una única orden?
+
+	rm -r d1
+
+29. Quiero cambiar el directorio actual a un "hermano" (hijo del mismo padre) del actual. El directorio al que quiero cambiar se llama "d1". ¿Cómo se hace con una única orden?.
+
+	cd ../d1
+
+30. Quiero conocer la mayor información posible (permisos, tamaño, etc) del directorio actual. ¿Cómo puedo hacerlo mediante una única orden?
+
+	ls -l
+
+31. Quiero conocer la mayor información posible (permisos, tamaño, etc) del directorio padre del actual. ¿Cómo puedo hacerlo mediante una única orden?
+
+	ls -l ..
+
+32. Quiero copiar todos los ficheros del directorio actual a un directorio que se llama /tmp. Suponiendo que tengo los permisos necesarios, ¿Cómo puedo hacerlo?
+
+	cp * /tmp
+
+33. Quiero crear un directorio hijo del directorio "d1", que es hijo del directorio actual. Indique cómo se hace con una única orden
+
+	mkdir d1/nombreDirectorioHijo
+
+34. Quiero mover todos los ficheros del directorio actual a un directorio que se llama /tmp. Suponiendo que tengo los permisos necesarios, ¿Cómo puedo hacerlo?
+
+	mv * /tmp
+
+----------------------------------------------------------------
+EJERCICIOS DEL APARTADO 3:
+
+1. Localiza los usuarios que se encuentran conectados en este momento a la máquina.
+
+	Lo hacemos mediante la orden who
+
+2. Ejecuta las líneas de órdenes:
+	sleep 15; echo He terminado
+	(sleep 15; echo He terminado)&
+e intenta en ambos casos ejecutar la orden ps -f en el tiempo de espera. Explica la diferencia de funcionamiento.
+
+	En el primer caso estamos ejecutando la orden sleep y echo en primer plano. Luego, al ejecutar la orden ps -f, en primer plano, en el tiempo de espera, no será ejecutada hasta que la orden sleep y echo hayan sido ejecutadas.
+
+	En el segundo caso ponemos a ejecutar la orden sleep y echo en segundo plano. Luego, al ejecutar la orden ps -f, en primer plano, se ejecuta a la vez que las ordenes sleep y echo por estar en planos diferentes.
+
+3. Ejecuta el programa /home/teachers/albizu/publico/bucle en primer plano. Haz que termine. Haz lo mismo, pero lanzándolo en segundo plano.
+
+	En primer plano: /home/teachers/albizu/publico/bucle
+	Lo finalizamos con: control+C
+
+	En segundo plano: /home/teachers/albizu/publico/bucle &
+	Lo finalizamos con kill -9 PID
+
+4. Ejecuta la orden ps para descubrir los procesos en curso.
+
+	ps
+
+5. Busca información acerca de las órdenes who y finger y comprueba la diferencia.
+
+	man who: muestra informacion acerca de los usuarios que están conectados.
+
+	man finger: muestra informacion de un usuario respaldada en el sistema.
+
+6. Usa la orden top para ver los procesos en ejecución. Intenta explicar el contenido de cada pieza de información que se muestra (acude al man en caso necesario).
+
+	PID del proceso en ejecucion
+	Usuario que está ejecutando el proceso
+	PR: prioridad del proceso
+	NI (nice value): el buen valor del proceso. Un valor negativo indica alta prioridad; Un valor positivo indica menor prioridad; Zero indica qie la prioridad no es ajustada en función de la capacidad de asignar tareas o trabajos al recurso de forma eficiente.
+	VIRT: tamaño de la memoria virtual asignada al proceso
+	RES: la cantidad de memoria en disco que no está usando el proceso
+	SHR: la cantidad de memoria compartida del proceso
+	S: el estado del proceso (D = detenido sin posibilidad de interrumpirlo; R = ejecutando (running); S = detenido (sleeping); T = trazando o detenido (traced or stopped); Z = zombie)
+	El % de CPU que ocupa el proceso en ejecución
+	EL % de memoria RAM que ocupa el proceso en ejecución
+	El tiempo que lleva el proceso en ejecucion
+	El nombre del proceso en ejecución
+
+7. Define una orden para suspender el proceso en primer plano. Ejecuta la orden man y suspende su ejecución. Usa ps para ver el estado en que está. Reanuda la ejecución del proceso.
+
+	stty susp ^Z (es control+z)
+	(control+v, control+z)
+	stty (para ver que ha sido asignada)
+	man man
+	(control+z)
+	ps (está en estado T (parado o haciendo una traza))
+	jobs
+	fg 1
+
+8. Indica cómo podemos conocer todos los procesos que el usuario tiene en ejecución.
+
+	ps x
+
+9. Indica cómo podemos lanzar procesos en segundo plano. 
+
+	Con un & al final del proceso a ejecutar
+
+10. Indica cómo podemos reanudar en segundo plano un proceso que acabamos de suspender.
+
+	Ejecutas jobs para ver los procesos creados por el usuario
+	Ejecutas bg numeroDelProcesoEnJobs y reanudas un proceso en segundo plano
+
+11. Indica cómo podemos suspender el proceso que se está ejecutando en primer plano.
+
+	Con control+Z
+	O con la orden kill -19 PIDDelProceso
+
+12. Indica cómo podemos conocer la lista de procesos que hemos lanzado en segundo plano.
+
+	Con la orden jobs
+
+13. Indica cómo podemos suspender un proceso que no está en primer plano, pero que se ha lanzado desde otra terminal.
+
+	Con la orden kill -19 PIDDelProceso
+
+14. Indica cómo se eliminan procesos en ejecución. Explica las distintas alternativas que tenemos.
+
+	Con la orden kill -9 PIDDelProceso
+
+15. Utiliza la orden man para identificar las opciones de que dispone la orden ps. Pruébalas para comprobar cómo funcionan.
+
+	UNIX options
+	BSD options
+	GNU long options
+
+16. Lanza el programa bucle antes comentado en segundo plano dos veces, una normal y otra utilizando la orden nice. Déjalas ejecutando unos 10 minutos o más y comprueba cuánto tiempo de procesador han utilizado. Explica la diferencia entre los tiempos consumidos.
+
+	Lanzar el programa bucle dos veces en segundo plano:
+		Forma normal: time (/home/teachers/albizu/publico/bucle) &
+
+		Con el nice: time nice (/home/teachers/albizu/publico/bucle) &
+
+	Explicación: La orden nice hace que se ejecute el programa con una prioridad inferior tal que sólo se ejecutará la instrucción indicada cuando el resto de procesos normales del sistema no requieran ser ejecutados
+
+17. Utiliza la orden at para lanzar el programa bucle dentro de unos minutos. Comprueba entonces que se ha lanzado.
+
+	at -f bucle now + 2 minutes
+
+18. Utiliza la orden crontab para lanzar el programa bucle dentro de unos minutos. Comprueba entonces que se ha lanzado.
+
+	crontab -u UO287577 -e (con el -e editamos una tabla/la creamos si no tenemos ninguna)
+
+	(son las 15:59, lo programamos para las 16:00)
+	00 16 * * * /home/teachers/nestor/publico/bucle
+
+	Vemos que está funcionando con ps x (no se ejecuta en primer plano, luego, su ejecución no la vemos en pantalla si no lo comprobamos con ps x)
+----------------------------------------------------------------
+EJERCICIOS DEL APARTADO 4:
+
+1. Elimina la recepción de mensajes procedentes de otros usuarios.
+
+	Lo hacemos con la orden mesg n
+
+2. Crea un fichero de texto con la orden cat.
+
+	cat cd_q_no_existe.txt > fichero_creado_con_cat.txt
+
+3. Visualiza a través de una tubería el contenido del fichero /etc/passwd, haciendo que la pantalla se detenga cuando ésta se llene.
+
+	cat /etc/passwd | more
+
+4. Añade un texto a un fichero de texto ya existente.
+
+	nano fichero_creado_con_cat.txt
+
+5. Redirecciona el error que produzca una orden incorrecta a un fichero de error.
+
+	mn 2> fichero_de_error.txt
+
+6. Cuenta el número de usuarios que están conectados en este instante, mediante una orden que utilice tubería.
+
+	who | wc -l
+
+7. Averigua cuántas veces te has conectado en el último mes. Cuenta también el número total de conexiones que ha habido a petra en el último mes.
+
+	???????????
+
+8. Cuenta cuantos usuarios distintos hay dados de alta en petra (cuantos usuarios registrados hay en el sistema).
+
+	lastlog | wc
+
+	Nos sale que hay 1926 usuarios distintos dados de alta en petra
+
+9. Cuenta el número de usuarios distintos que se han conectado al sistema en el último mes.
+
+	???????????
+
+10. Guarda el contenido de un directorio en un fichero.
+
+	ls directorio > fichero
+
+11. Guarda en un fichero la localización de todos aquellos ficheros del sistema que tengan como extensión .out. Realiza la operación en modo subordinado.
+
+	find ./ -name "*.out" > localizacion_ficheros_extension_out
+
+12. Guarda en el fichero CONECTADOS la máxima cantidad de información que puedas obtener a través de alguna orden, sobre los usuarios conectados en este momento.
+
+	who -w (para mostrar mas info) | finger > CONECTADOS.txt
+
+13. Escribe en un fichero la información de los usuarios que tengan “Alvarez” como alguno de sus apellidos.
+
+	finger Alvarez > usuarios_alvarez.txt
+
+14. Cuenta el número de usuarios que existen en el sistema.
+
+	cat /etc/passwd | wc -l (para que solo muestre el numero de lineas)
+
+	Nos salen que existen 1925 usuarios en el sistema
+
+15. Cuenta el número de grupos que existen en el sistema.
+
+	cat /etc/group | wc -l (para que solo muestre el numero de lineas)
+
+	Nos salen unos 256 grupos totales en el sistema
+
+16. Escribe un mensaje a un compañero que esté conectado a la máquina de forma que le aparezca a éste de inmediato en pantalla.
+
+	Miro quien está conectado con la orden who
+
+	Escribo la orden write <usuario> <mensaje>
+
+17. Entabla un diálogo por ordenador con un compañero que esté conectado a la máquina.
+
+	Miro quien está conectado con la orden who
+
+	Escribo la orden talk <usuario>
+
+18. Busca mediante una orden el fichero passwd en el directorio /etc.
+
+	cat passwd
+
+19. Busca mediante una orden el fichero passwd en toda la jerarquía de directorios.
+
+	cat /etc/passwd
+
+20. Comprueba a través de una tubería si existe algún usuario conectado en este instante que se apellide “García”.
+
+	finger | grep Garcia
+
+21. Crea un fichero que contenga el contenido del directorio raíz denominado RAIZ.
+
+	ls > RAIZ.txt
+
+22. Cuenta cuantos usuarios están conectados actualmente desde una maquina de la Escuela.
+
+	???????????
+
+23. Cuenta cuantos usuarios están dados de alta en el sistema que se apelliden Sanchez.
+
+	finger Sanchez | wc
+	
+	Nos salen que hay 149 usuarios dados de alta en el sistema que se apellidan Sanchez.
+
+	LA ORDEN FINGER NOS DA LA INFO DE LOS USUARIOS DADOS DE ALTA EN EL SISTEMA
+
+24. Cuenta el numero de maquinas distintas desde las que se han realizado conexiones a petra este último mes (desde que se inicializo el fichero wtmp).
+
+	???????????
+
+	pts/1 es una maquina y pts/2 es otra maquina distinta
+
+25. Cuenta el número de usuarios distintos que se han conectado a petra este último mes (desde que se inicializo el fichero wtmp).
+
+	Miramos los accesos al sistema del mes con la orden last
+
+	last | sort > 1.txt
+	cut -d ' ' -f 1 1.txt | uniq | wc -l
+
+	Nos sale un número de 76 usuarios distintos
+
+26. Haz una estadística (ordenada de mayor a menor) del número de sesiones que tiene abiertas cada usuario.
+
+	???????????
+
+27. Haz una estadística (ordenada de mayor a menor) del número de veces que se está ejecutando cada proceso en el sistema.
+
+	???????????
+
+28. Haz una estadística (ordenada de mayor a menor) del número de veces que se ha conectado a petra cada maquinas desde las que se accedido al sistema este último mes (desde que se inicializo el fichero wtmp).
+
+	???????????
+
+29. Haz una estadística (ordenada de mayor a menor) del número de veces que se ha conectado a petra cada usuario en este último mes (desde que se inicializo el fichero wtmp).
+
+	???????????
+
+----------------------------------------------------------------
+EJERCICIOS DEL APARTADO X:
+

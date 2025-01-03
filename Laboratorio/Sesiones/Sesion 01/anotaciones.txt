@@ -1,0 +1,134 @@
+Conectarse a ritchie por 
+ssh -Y uo287577@ritchie.ingenieriainformatica.uniovi.es
+VPN: portalgp.uniovi.es
+
+
+descargar el wsl (o el wsl2) y el MobaXterm
+
+
+ubuntu 20.4.6 en la microsoft store
+nos va a pedir crear un usuario
+
+Salir de la sesion con: exit (o con logout)
+
+- orden man ls: muestra la ayuda sobre las ordenes externas del shell. Nos dice al final los ficheros que se leen para mostrar la ayuda relevante a la instrucción ls.
+
+- orden apropos password: muestra las instrucciones relacionadas con password
+
+- orden info bash: muestra la ayuda del man bash pero de una forma más amigable y nos dice qué fichero de ayuda se consulta para mostrar dicha ayuda.
+
+- orden help: muestra el conjunto de órdenes internas de shell
+	- help intruccion: muestra la ayuda relacionada con la instruccion
+
+- orden type cd: nos dice de que tipo es la orden cd (nos dice que es interna a shell). Nos puede decir qué fichero se accede para ejecutar las órdenes externas a shell como la orden man
+
+- orden history: nos permite ver el historial de ordenes que puse en el ritchie
+	!numeroDeLineaDeLaIntruccionDelHistorial: ejecuta la instruccion de la linea 4
+	!!: ejecuta la ultima intruccion
+	!-4: ejecuta la instrucción situada 4 posiciones detrás desde la actual / ultima registrada en el historial
+	!string (entre comillas dicho string): ejecuta la última instrucción registrada que empiece por lo declarado en string
+
+- orden ls -l: muestran todos los ficheros, directorios y archivos que no estén ocultos
+
+- orden ls -la: muestran todos los ficheros, directorios y archivos que estén ocultos y que no estén. El número de enlaces del directorio se puede visualizar entre los permisos del directorio "." y el propietario
+
+- orden ls -ld: muestra información detallada acerca de un directorio como su número de enlaces
+
+directorio o fichero que empieza con "." significa que es oculto
+
+- orden cat fichero1: muestra el contenido del fichero1
+
+- orden cp fichero1 fichero2: hace una copia del fichero1 y la nombra fichero2
+
+- orden mv fichero1 ../: mueve el fichero1 al directorio padre (../) (.. es el directorio padre pero lo especificamos para esta instruccion)
+
+- orden rm fichero1: borra el fichero1
+
+- orden pwd: nos muestra en que directorio estamos
+
+- orden cd ..: vamos al directorio padre
+
+- orden cd ~: vamos al directorio de trabajo
+
+- orden mkdir nombreDirectorio: crea un directorio de nombre nombreDirectorio
+
+- orden rmdir nombreDirectorio: borra el directorio si está vacío
+
+- orden rm -r nombreDirectorio: borra todo el directorio aunque no esté vacío
+
+
+rutas absolutas: indica el path a seguir desde la raiz (/student/home/alumnos) para llegar a donde quiero
+ruta relativa: indica el path a seguir desde donde estoy yo (con ../../home/alumnos)
+
+
+- orden mount: muestra los discos que estan montados y dónde están montados.
+	Montar: hacer que el operativo enlace el contenido de un disco con el sistema de ficheros. Hacer corresponder un directorio en el sistema de ficheros principal al directorio raíz del disco a montar.
+
+- orden df: informa sobre la situación de los discos que están montados, en qué directorios están montados (puntos de montaje), el tamaño que ocupan y su capacidad.
+	
+	- orden df -h: hace lo mismo que la orden df con la diferencia de mostrar la información mucho mejor (mejor usar esta versión del df que la original)
+
+- orden quota: muestra la cuota maxima de espacio a poder ser ocupado en un disco por un usuario.
+
+	- orden quota -v: hace lo mismo que la orden quota con la diferencia de mostrar más información indicando los límites tanto de espacion en disco como de número de ficheros máximos que puede tener el usuario.
+
+	- orden du: nos muestra el número de bloques (cada bloque es de 1 KB) que ocupa cada directorio (o cada fichero también en cada directorio, si usamos la opción -a) pertenecientes al directorio que especifiquemos (o al directorio actual si no indicamos directorio)
+
+formato [ugo] [+-] [rwx]:
+	Mediante el primer conjunto de letras se especifica para quién se va a modificar los permisos:
+		u: para el propietario
+		g: para el grupo
+		o: para otros
+	El + o el - especifica si se va a dar o quitar el permiso.
+	El último grupo de letras indica el permiso a modificar:
+		r: para leer
+		w: para escribir
+		x: para ejecutar
+	
+	Se puede introducir cualquier combinacion d elas letras relativas tanto a los usuarios como a los permisos. Así, se podría indicar, por ejemplo, go-wx para indicar que se quitaran los permisos de escritura y ejecucion al grupo y otros.
+
+	chmod go-wx nombreFichero
+
+formato octal:
+	r(4) w(2) x(1): si quiero los tres permisos, el valor es la suma de los tres valores del parentesis
+
+	chmod     7 (4+2+1)	  4	  4     nombreFichero
+	         propietarios   grupo   otros
+
+- orden umask: primer 0 (no usamos permisos especiales). Los otros tres digitos son la mascara con los digitos de permisos por defecto (permisos de un directorio (777 por ejemplo) - los tres ultimos digitos de la mascara = permisos por defecto de los ficheros que se creen)
+	Permisos maximos para ficheros (no deja crearlos con permiso de ejecucion porque unix no lo permite): 666
+
+	- orden para cambiar la máscara: umask formato ugo o formato octal
+
+
+Primer caracter del listado de permisos al hacer un ls -l:
+
+	d: es un directorio. 
+	-: es un fichero.
+	l: es un link (enlace simbólico)
+
+- orden ln -s (para que sea simbolico) fichero1 fichero2 (o nombreEnlace): crea un accesso directo en el fichero1 enlazado con el fichero2 (o nombreEnlace)
+
+	Para borrar un enlace simbólico, independientemente que sea a un fichero o a un directorio, se usa la orden rm antes vista.
+
+
+- orden touch mi_fichero.txt: crear fichero con un editor de texto
+
+- orden nano mi_fichero.txt: crear fichero con un editor de texto
+
+
+- orden chown propietario fichero: establece como nuevo propietario del fichero indicado
+
+- orden chgrp grupo fichero: establece como nuevo grupo al cual pertenece el fichero indicado
+
+
+RUTA ABSOLUTA: El camino a seguir desde la raiz (/).
+	Ejemplo: desde el directorio actual /home/profesores para ir al directorio albizu, la ruta absoluta a escribir es:
+		cd /home/profesores/albizu
+	ESCRIBIMOS LA RUTA COMPLETA INDEPENDIENTEMENTE DEL DIRECTORIO EN EL QUE NOS SITUEMOS.
+
+RUTA RELATIVA (ir entrando poco a poco en cada directorio): El camino a seguir desde el directorio en el que nos encontramos actualmente.
+	Ejemplo: desde el directorio actual /home/profesores para ir al directorio albizu, la ruta relativa a escribir es:
+		cd albizu
+
+

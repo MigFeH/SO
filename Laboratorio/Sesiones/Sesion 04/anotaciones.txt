@@ -1,0 +1,30 @@
+gcc -g fichero.c
+gdb a.out
+
+
+
+run argumento1 argumento2 ...
+b main: breakpont en el metodo main
+	b main:30 (breakpoint en la linea 30 del main)
+	b ComputerSystem.c:20 (breakpoint en el fichero ComputerSystem.c en la linea 20)
+watch contador: detiene la ejecucion cuando el valor de contador cambie
+p contador: para ver el valor actual del contador
+info b: lista los puntos de ruptura
+
+s: ejecuta paso a paso entrando en las funciones
+	s num: ejecuta num de lineas paso a paso
+n (next): ejecuta paso a paso sin entrar dentro de las funciones
+
+rm -f: para que no pregunte al borrar (va a preguntar cuando se lleven muchos borrados)
+------------------------------------------------------------------
+SIMULADOR V0:
+
+
+
+
+
+
+
+
+
+

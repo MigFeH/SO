@@ -1,0 +1,7 @@
+- man orden: muestra por pantalla las paginas del manual disponibles para orden
+
+- apropos concepto: nos busca todas las ordenes relacionadas con un concepto determinado
+	(busca la palabra que pasamos como parametro dentro del campo NAME de las paginas de manual del man y una breve descripcion de cada pagina del man)
+
+- whatis concepto: hace lo mismo que el apropos con la diferencia de que sólo busca dentro del nombre de la pagina del man
+	- whatis -w concepto: permite buscar con caracteres comodines (*,?,...)

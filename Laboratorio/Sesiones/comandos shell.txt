@@ -1,0 +1,463 @@
+Conectarse a ritchie por 
+ssh -Y uo287577@ritchie.ingenieriainformatica.uniovi.es
+VPN: portalgp.uniovi.es
+UbeX3t
+
+
+descargar el wsl (o el wsl2) y el MobaXterm
+
+
+ubuntu 20.4.6 en la microsoft store
+nos va a pedir crear un usuario
+
+Salir de la sesion con: exit (o con logout)
+
+- orden man ls: muestra la ayuda sobre las ordenes externas del shell. Nos dice al final los ficheros que se leen para mostrar la ayuda relevante a la instrucción ls.
+
+- orden apropos password: muestra las instrucciones relacionadas con password
+
+- orden info bash: muestra la ayuda del man bash pero de una forma más amigable y nos dice qué fichero de ayuda se consulta para mostrar dicha ayuda.
+
+- orden help: muestra el conjunto de órdenes internas de shell
+	- help intruccion: muestra la ayuda relacionada con la instruccion
+
+- orden whatis orden: Imprime descripciones de páginas de manual de la orden
+
+- orden type cd: nos dice de que tipo es la orden cd (nos dice que es interna a shell). Nos puede decir qué fichero se accede para ejecutar las órdenes externas a shell como la orden man
+
+- orden history: nos permite ver el historial de ordenes que puse en el ritchie
+	!numeroDeLineaDeLaIntruccionDelHistorial: ejecuta la instruccion de la linea 4
+	!!: ejecuta la ultima intruccion
+	!-4: ejecuta la instrucción situada 4 posiciones detrás desde la actual / ultima registrada en el historial
+	!string (entre comillas dicho string): ejecuta la última instrucción registrada que empiece por lo declarado en string
+
+- orden ls -l: muestran todos los ficheros, directorios y archivos que no estén ocultos
+
+- orden ls -la: muestran todos los ficheros, directorios y archivos que estén ocultos y que no estén. El número de enlaces del directorio se puede visualizar entre los permisos del directorio "." y el propietario
+
+- orden ls -ld: muestra información detallada acerca de un directorio como su número de enlaces
+
+directorio o fichero que empieza con "." significa que es oculto
+
+- orden cat fichero1: muestra el contenido del fichero1
+
+- orden cp fichero1 fichero2: hace una copia del fichero1 y la nombra fichero2
+	cp -r directorioAlQueCopiar DirectorioAlQueVolcarLaInfo: copiar todo de un directorio a otro (de forma recursiva)
+
+- orden mv fichero1 ../: mueve el fichero1 al directorio padre (../) (.. es el directorio padre pero lo especificamos para esta instruccion)
+
+- orden rm fichero1: borra el fichero1
+
+- orden pwd: nos muestra en que directorio estamos
+
+- orden cd ..: vamos al directorio padre
+
+- orden cd ~: vamos al directorio de trabajo
+
+- orden mkdir nombreDirectorio: crea un directorio de nombre nombreDirectorio
+
+- orden rmdir nombreDirectorio: borra el directorio si está vacío
+
+- orden rm -r nombreDirectorio: borra todo el directorio aunque no esté vacío
+
+
+rutas absolutas: indica el path a seguir desde la raiz (/student/home/alumnos) para llegar a donde quiero
+ruta relativa: indica el path a seguir desde donde estoy yo (con ../../home/alumnos)
+
+
+- orden mount: muestra los discos que estan montados y dónde están montados.
+	Montar: hacer que el operativo enlace el contenido de un disco con el sistema de ficheros. Hacer corresponder un directorio en el sistema de ficheros principal al directorio raíz del disco a montar.
+
+- orden df: informa sobre la situación de los discos que están montados, en qué directorios están montados (puntos de montaje), el tamaño que ocupan y su capacidad.
+	
+	- orden df -h: hace lo mismo que la orden df con la diferencia de mostrar la información mucho mejor (mejor usar esta versión del df que la original)
+
+- orden quota: muestra la cuota maxima de espacio a poder ser ocupado en un disco por un usuario.
+
+	- orden quota -v: hace lo mismo que la orden quota con la diferencia de mostrar más información indicando los límites tanto de espacion en disco como de número de ficheros máximos que puede tener el usuario.
+
+	- orden du: nos muestra el número de bloques (cada bloque es de 1 KB) que ocupa cada directorio (o cada fichero también en cada directorio, si usamos la opción -a) pertenecientes al directorio que especifiquemos (o al directorio actual si no indicamos directorio)
+
+formato [ugo] [+-] [rwx]:
+	Mediante el primer conjunto de letras se especifica para quién se va a modificar los permisos:
+		u: para el propietario
+		g: para el grupo
+		o: para otros
+	El + o el - especifica si se va a dar o quitar el permiso.
+	El último grupo de letras indica el permiso a modificar:
+		r: para leer
+		w: para escribir
+		x: para ejecutar
+	
+	Se puede introducir cualquier combinacion d elas letras relativas tanto a los usuarios como a los permisos. Así, se podría indicar, por ejemplo, go-wx para indicar que se quitaran los permisos de escritura y ejecucion al grupo y otros.
+
+	chmod go-wx nombreFichero
+
+formato octal:
+	r(4) w(2) x(1): si quiero los tres permisos, el valor es la suma de los tres valores del parentesis
+
+	chmod     7 (4+2+1)	  4	  4     nombreFichero
+	         propietarios   grupo   otros
+
+- orden umask: primer 0 (no usamos permisos especiales). Los otros tres digitos son la mascara con los digitos de permisos por defecto (permisos de un directorio (777 por ejemplo) - los tres ultimos digitos de la mascara = permisos por defecto de los ficheros que se creen)
+	Permisos maximos para ficheros (no deja crearlos con permiso de ejecucion porque unix no lo permite): 666
+
+	- orden para cambiar la máscara: umask formato ugo o formato octal
+
+
+Primer caracter del listado de permisos al hacer un ls -l:
+
+	d: es un directorio. 
+	-: es un fichero.
+	l: es un link (enlace simbólico)
+
+- orden ln -s (para que sea simbolico) fichero1 fichero2 (o nombreEnlace): crea un accesso directo en el fichero1 enlazado con el fichero2 (o nombreEnlace)
+
+	Para borrar un enlace simbólico, independientemente que sea a un fichero o a un directorio, se usa la orden rm antes vista.
+
+
+- orden touch mi_fichero.txt: crear fichero con un editor de texto
+
+- orden nano mi_fichero.txt: crear fichero con un editor de texto
+
+
+- orden chown propietario fichero: establece como nuevo propietario del fichero indicado
+
+- orden chgrp grupo fichero: establece como nuevo grupo al cual pertenece el fichero indicado
+
+
+RUTA ABSOLUTA: El camino a seguir desde la raiz (/).
+	Ejemplo: desde el directorio actual /home/profesores para ir al directorio albizu, la ruta absoluta a escribir es:
+		cd /home/profesores/albizu
+	ESCRIBIMOS LA RUTA COMPLETA INDEPENDIENTEMENTE DEL DIRECTORIO EN EL QUE NOS SITUEMOS.
+
+RUTA RELATIVA (ir entrando poco a poco en cada directorio): El camino a seguir desde el directorio en el que nos encontramos actualmente.
+	Ejemplo: desde el directorio actual /home/profesores para ir al directorio albizu, la ruta relativa a escribir es:
+		cd albizu
+
+------------------------------------------------------------
+
+?: se podrá sustituir por cualquier carácter [p?: que empiece por p y lo siga cualquier otro carácter pero solo 1 caracter más (que empiece por p y tenga una longitud de 2 caracteres)]
+
+*: se podrá sustituir por cualquier carácter y cualquier número de caracteres [p*: que empiece por p y lo siga cualquier número de caracteres]
+
+> fichero: crea un fichero y vuelca la salida en el. Si el fichero ya existía entonces machaca la información que contenía el fichero anteriormente
+
+>> fichero: hace un append sobre el fichero
+
+2> fichero: vuelva una salida de error en un fichero
+
+more < fichero: vuelca la entrada. El more pagina la informacion (nos muestra la info en forma de pagina)
+
+pipelines: encadenar varias órdenes o comandos
+	orden1 | orden2
+	la salida de la orden1 es la entrada de la orden2
+
+------------------------------------------------------------
+
+- orden grep filtro entrada: filtra la entrada por una palabra (en el hueco del filtro)
+	grep -v filtro entrada: muestra las lineas que no concuerdan con el filtro
+	grep -c filtro entrada: cuenta las lineas que concuerdan con la expresion
+	grep -i filtro entrada: compara sin distinguir entre mayusculas y minusculas
+
+- orden less entrada: pagina la entrada que le pasas
+
+- orden head entrada: muestra las 10 primeras lineas de la entrada
+	head -n numero entrada: muestra las numero primeras lineas de la entrada
+
+- orden tail entrada: muestra las 10 ultimas lineas del fichero especificado como parametro o la entrada estandar si no se especifica ninguno
+	tail -n numero entrada: muestra las numero ultimas lineas de la entrada
+
+- orden wc fichero: cuenta las lineas, palabras y caracteres que tiene el fichero especificado como parametro o la entrada estandar si no se especifica ninguno
+	wc -l fichero: solo muestra las lineas del fichero
+
+- orden sort entrada: ordena alfabeticamente
+	sort -n entrada: ordenacion numerica
+	sort -r entrada: orden inverso, de mayor a menor
+	sort -u entrada: elimina lineas duplicadas
+	sort -f entrada: ordena sin hacer distincion entre mayusculas y minusculas
+	sort -b entrada: ignora los espacios en blanco antes de la clave de ordenacion
+
+- orden uniq entrada: elimina lineas duplicadas de la entrada
+	uniq -c entrada: muestra cuantas lineas repetidas habia en el fichero original
+
+- orden tr [caracteresACambiar] [caracteresNuevos]: transforma los caracteres que se especifican presentes en la entrada por otros tambien indicados
+	tr -d [caracteresACambiar]: elimina todas las apariciones de los caracteres indicados en caracteresACambiar
+	tr -s [caracteresACambiar]: elimina todos los caracteresACambiar que esten duplicados, dejando sólo uno
+
+- orden cut: selecciona partes de cada una de las líneas del fichero de entrada. Pueden seleccionarse las partes como campos separados por un carácter determinado o como columnas dentro de cada línea. El formato de la orden es:
+
+	cut -flista-campos [-dsep] [-s] [lista-ficheros]
+	cut –clista-columnas [lista-ficheros]
+
+donde:
+	-flista-campos: indica los campos a seleccionar. La lista puede ser un rango, un conjunto de números separados por comas o una separación de ambos.
+
+	-dsep: especifica el separador entre campos (por defecto es el tabulador).
+
+	-clista-columnas: indica las columnas a seleccionar. La lista se especifica como en el caso anterior.
+
+	-s: suprime el tratamiento de las líneas que no contengan el separador.
+
+- orden join fichero1 fichero2: une dos ficheros
+
+- orden ls -l | grep drwx*: filta todos los directorios con todos los permisos para el propietario
+
+- orden ls -l |	grep drwx......: filtra las lineas del ls que empiecen por drwx y los sigan 6 caracteres cualesquiera (el nº de caracteres viene dado por el nº de ".")
+
+------------------------------------------------------------
+ORDENES VARIADAS:
+
+- orden cal: muestra el calendario del mes en curso o del año indicado
+
+- orden calendar: muestra por pantalla los eventos para hoy y mañana recogidos en la agenda del sistema o en el fichero calendar o .calendar del directorio del usuario
+
+- orden clear: limpia la pantalla
+
+- orden date: muestra la hora y fecha del sistema
+
+- orden tty: muestra el nombre de terminal que tiene asociado el usuario
+
+- orden mesg: habilita (con el parámetro y) o deshabilita (con el parámetro n) el acceso a la terminal del usuario por parte del resto de usuarios. Si no se indica parámetro muestra si la comunicación está habilitada o inhabilitada
+
+- orden write usuario: escribe un mensaje en la terminal del usuario especificado. Para ello, tanto el emisor como el receptor deben tener habilitados los mensajes
+
+- orden wall: escribe un mensaje en la terminal de todos los usuarios que tengan los mensajes habilitados. Muy útil para el administrador para comunicar eventos a todos los usuarios conectados, dado que en este caso se escribe a todos los usuarios, independientemente de que tengan habilitados o no lo mensajes
+
+- orden talk: permite establecer una comunicacion interactiva con otro usuario
+
+- orden time orden: muestra el tiempo total, el tiempo en modo usuario y el tiempo en modo núcleo de ejecución de una orden concreta. Bajo este nombre hay dos órdenes:
+	Una interna al shell
+	Otra (/usr/bin/time), que aporta más información que la orden interna
+
+- orden tar: su funcion original es la de transferir ficheros desde/hacia un dispositivo de cinta. Suele utilizarse, sin embargo, para crear un único fichero que contenga varios, para almacenarlos en el disco, transferirlos a otra máquina, etc.
+
+- orden gzip fichero, gunzip fichero: comprime/descomprime un fichero determinado, haciendo que así ocupe menos espacio
+
+------------------------------------------------------------
+INFORMACION SOBRE EL SISTEMA:
+
+- orden uname: muestra info sobre el sistema al que estamos conectados
+	uname -a: para mas info (nombre del SO, nombre de la máquina, versión, etc)
+
+- orden who: muestra el nombre de usuario de todos los que se encuentran conectados a la máquina
+	- who -w: para mas info
+	- who am i: nos muestra nuestro nombre de usuario (con el mismo formato que who)
+	- whoami (o logname): sólo nos muestra nuestro nombre de usuario
+	- w: nos muestra los usuarios conectados al sistema y qué está ejecutando cada usuario en ese momento
+
+- orden id: nos dice nuestro id de usuario, el grupo al que pertenecemos, el id del grupo, etc
+
+- orden finger usuario (como albizu): muestra info sobre un usuario aunque no estén conectados [ES LA ORDEN DEL DOXEO]
+
+- orden chfn: permite a los usuarios cambiar la info que consta en el sistema sobre ellos
+
+------------------------------------------------------------
+ORDENES RELACIONADAS CON PROCESOS:
+
+- orden ps (processes status): muestra la lista de procesos que hay en el sistema. [SOLO MUESTRA LOS QUE TIENE EL USUARIO EN ESA SESION]
+	- ps -l [o con -x]: nos muestra más información sobre nuestros procesos en el sistema
+	- ps -a: nos muestra todos los procesos del sistema [menos los de los lideres de la sesion]
+	- ps -e: nos muestra TODOS los procesos del sistema (todos los procesos en ejecucion obviamente)
+	- ps -u: nos incluye informacion del usuario al que pertenece cada proceso
+
+- orden top: vemos una instantanea de cómo está la máquina
+
+- orden uptime: podemos ver cuántos días lleva la máquina encendida, la carga y la carga media. Muestra la carga en el ultimo minuto, en los ultimos 5 minutos y en los ultimos 15 minutos
+
+- orden kill -9 (fuerce su detencion, que lo mate si o si) pid: matamos el proceso de un cierto pid
+	- killall nombreDelProceso: hace lo mismo que el kill pero en vez de pasarle el PID del proceso a eliminar le pasamos el nombre del proceso a eliminar
+
+- orden slay usuario: mata a todos los procesos pertenecientes a un usuario determinado. Sólo la pueden ejecutar usuarios con los debidos privilegios
+
+------------------------------------------------------------
+CAMBIO DE USUARIO O GRUPO:
+
+Si un usuario dispone de varias cuentas puede cambiar su "personalidad" mediante la ejecución de la 
+	
+	orden <su usuario>
+
+(lo pongo entre < y > para distinguir una orden del texto normal).
+
+
+A partir de ese momento la identidad del usuario que está trabajando pasará a ser la indicada, con lo que para todas las cuestiones relacionadas con la identidad del usuario se tendrá en cuenta esta nueva.
+
+
+Respecto al grupo de usuario, un usuario puede pertenecer a varios grupos a la vez. Pero en un momento dado sólo está activo uni, que es el que se aplica para todo lo relacionado con el grupo al que pertenece al usuario.
+
+No obstante, el usuario puede cambiar libremente su grupo activo por medio de la
+
+	orden <newgrp grupo>
+
+Si el usuario pertenece al grupo a partir de ese momento el sistema tomará ese grupo como el del usuario a todos los efectos.
+
+------------------------------------------------------------
+EJECUCION EN SEGUNDO PLANO:
+
+Para ejecutar una orden en segundo plano ponemos un & al final de la orden. Ejemplo:
+	
+	prog &
+
+Para parar un proceso en primer plano y reanudarlo en segundo plano:
+	- orden bg proceso: reanudar en segundo plano un proceso parado.
+	
+	Si hay varios procesos parados los podemos ver con la
+		orden jobs
+	Indicando en la orden bg el número de trabajo que antecede al programa que queremos reanudar
+
+- PARA PARAR UN PROCESO: control+z (o con kill -19 PIDDelProceso)
+- PARA MATAR UN PROCESO: control+c (o con kill -9 PIDDelProceso)
+
+Visualizamos todo el proceso con ps x
+
+Para traer un proceso en segundo plano al primer plano:
+
+	Lo detenemos con la orden kill -19 PID
+	Lo reanudamos en primer plano con la orden fg
+
+- orden fg: nos permite reanudar en primer plano un proceso en segundo plano
+
+------------------------------------------------------------
+TEMPORIZACION Y PLANIFICACION DE LA EJECUCION DE ORDENES:
+
+- orden at hora -f fichero: Permite ejecutar una orden a una hora dereminada. Las órdenes a ser ejecutadas deben estar contenidas en un fichero ejecutable, es decir, debe ser un programa de shell.
+
+	- orden at hora -c numeroDeTrabajo: muestra las órdenes que se ejecutarán a esa hora, incluyendo la inicializacion de todas las variables necesarias para que se ejecute en el mismo entorno que ahora.
+
+	Para especificar la hora hay multitud de formas:
+
+		- Mediante el formato HH:MM, indicando la hora y minutos a la que se quiere ejecutar la orden. Si la hora no ha llegado se supone que es de hoy; si ya ha pasado se ejecutará a la hora indicada mañana. Podemos añadir las iniciales PM o AM
+para indicar la hora en formato de 12 horas, dado que de otro modo se entiende que la hora está en formato de 24 horas.
+
+		- Pueden utilizarse las palabras midnight, noon o teatime, para hacer referencia a las 12 de la noche, las 12 del mediodía o las 4 de la tarde.
+
+		- Indicando tras la hora la palabra tomorrow o today para especificar qué día queremos que se ejecute.
+
+		- Si queremos que se ejecute en otro día, tras la hora se puede indicar la fecha con el formato MM/DD/AA, siendo MM el mes, DD el día y AA el año.
+
+		- Utilizando “now + NN [minutes| hours | days| weeks]”. La orden se ejecutará dentro de NN minutos, horas, días o semanas.
+
+- orden atq: nos permite listar las órdenes planificadas mediante la orden at -f fichero con numeros de trabajo.
+
+- orden batch hora -f fichero: nos permite ejecutar una serie de ordenes a una hora determinada siempre y cuando la carga del sistema no sea excesiva (por defecto, menor que 1.5)
+
+- orden atrm numeroDeTrabajo: nos permite eliminar una orden planidicada indicando el número de trabajo a eliminar (lo miramos con atq)
+
+
+- orden crontab:
+
+El sistema puede mantener para cada usuario una tabla con las órdenes que tiene planificadas el usuario para ser ejecutadas en momentos determinados. Para trabajar con esa tabla se utiliza la orden crontab: 
+
+	crontab [-u usuario] {-e | -l | -r}
+
+Con la opción –e permite editar la tabla del usuario.
+Con –l muestra el contenido.
+Con la opción –r borra la tabla creada por el usuario. 
+
+El fichero de crontab contiene una línea para cada orden planificada. Cada línea tiene el siguiente formato básico:
+
+	Minuto hora día mes día-de-la-semana orden
+
+Si en lugar de uno de los datos indicados se pone un * indica que ese dato no es significativo:
+
+	- 5 0 * * * orden1: Ejecuta la orden1 a las 00:05 todos los días.
+
+	- 15 14 1 * * orden2: Ejecuta orden2 a las 14:15 el día 1 de cada mes.
+
+	- 0 22 * * 1-5 orden3: Ejecuta la orden 3 a las 22:00 de lunes a viernes.
+
+	- 23 0-23/2 * * * orden5: Ejecuta la orden5 a los 23 minutos de cada hora todos los días.
+
+	- 5 4 * * sun orden4: Ejecuta la orden6 todos los domingos a las 4:05.
+
+- orden whereis ls: localiza el binario de la instruccion ls
+
+- orden free -h: muestra la cantidad de memoria del sistema
+
+----------------------------------------------------------
+
+Alias en el .bashrc
+	alias letra='comando'
+
+Sales de la sesion y entras para que se aplique el cambio
+
+------------------------------------------------------------
+VARIABLES:
+(no se pueden poner espacios entre una operacion)
+
+	VARIABLE=valor
+
+	a=b: asigna a la variable "a" el valor "b"
+	a=$b: asigna a la variable "a" el valor que almacene la variable "b"
+
+Todas las variables que tenemos definidas se almacenan en el entorno de shell.
+
+- orden set: muestra todas las variables definidas en el entorno de Shell
+
+- orden export variable: nos permite exportar una variable fuera del entorno de shell para que se copien en el entorno de los procesos que se ejecuten desde ese shell
+
+
+- Comillas simples (' valor '): Todo lo que encierra se toma como un literal.
+
+	a='Estamos en el directorio $PWD'
+
+- Comillas dobles (" valor "): Lo que encierra se toma como un literal, a excepción de los nombres de variables (precedidas del $), que se sustituyen por su valor.
+
+	a="Estamos en el directorio $PWD"
+
+- Comillas simples inversas (' valor '): En este caso, el valor que se asigna a la variable es todo lo que dé como salida la ejecución de la orden que encierren.
+
+	a="Estamos en el directorio 'pwd'"
+
+
+- orden echo expresion: imprime por pantalla la expresion indicada
+	echo variable: imprime por pantalla el nombre de la variable
+	echo $variable: imprime por pantalla el valor de la variable
+
+- orden read variable: asigna a la variable el valor que se introduzca por teclado
+
+
+	${variable}expresion: Concatena al valor de la variable la expresion.
+
+	${variable:-valor}: Si la variable no está definida o tiene un valor nulo, utiliza el valor dado.
+
+	${variable:+valor}: Si la variable está definida y tiene un valor distinto de nulo, utiliza el valor dado.
+
+	${variable:=valor}: Si la variable no está definida o tiene un valor nulo, utiliza el valor dado y se lo asigna a la variable.
+
+	${variable:?mensaje}: Si la variable no está definida o tiene un valor nulo, imprime el mensaje indicado. 
+En el caso que se omita el mensaje se da un mensaje por defecto (parameter null or not set).
+
+	${#variable}: Devuelve la longitud (número de caracteres) del contenido de la variable.
+
+	${variable%expresion}: Elimina el lado derecho de la cadena, siempre y cuando el izquierdo se ajuste a la expresión indicada. Dicha expresión es una expresión regular, compuesta con los caracteres comodín conocidos.
+
+	${variable#expresion}: Elimina la parte izquierda del valor de la variable, siempre y cuando la parte derecha se ajuste a la expresión.
+
+
+Las variables son con mayusculas
+
+	$variable: va a ejecutar lo que guarde la variable como si se tratase de un prompt
+
+	variable: va a ejecutar la variable como si se tratase de un prompt
+
+
+Podemos ejecutar varias ordenes con ;
+	(cd directorio; pwd; ps): Entre paréntesis se crearía un shell nuevo para ejecutar las órdenes
+
+	{cd directorio; pwd; ps}: Entre llaves se ejecutaría en el mismo shell
+
+- orden bash -x script (extension .sh): ejecutar un script o Shellscript en modo depuracion y que se vaya imprimiendo por pantalla la orden que se va ejecutando
+- orden bash script (extension.sh): ejecutar un script
+	Le pasamos parámetros a continuacion del nombre del script separados por un espacio.
+	Ejemplo:
+		bash compara_numeros.sh 1 2 (le pasamos como parámetros un número 1 y número 2)
+
+.: directorio actual
+..: directorio padre
+~: directorio de trabajo (el home)
+
+- orden last: nos muestran los accesos al sistema por parte de todos los usuarios cada mes
+
+
+

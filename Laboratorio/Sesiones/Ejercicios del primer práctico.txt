@@ -1,0 +1,25 @@
+contar el numero de gente conectada que hay
+
+	finger | wc
+
+repetir la primera instruccion que empezaba por ddd
+
+	!ddd
+
+enlazar y compilar un monton de archivos .c y .h
+
+	gcc ficheroMain.c ficheroconlaimplementaciondelafuncionquesellamaenelmain ficheroconlaimplementaciondelafuncionquesellamaenelmain ...
+	./a.out
+
+ver si un usuario podia modificar un fichero
+
+	Directorio: necesita ejecución para acceder al fichero contenido en él
+	Fichero: necesita lectura (para poder acceder a la info a modificar) y escritura (para poder modificar) en el fichero
+
+como borrar todos los archivos que empezaban por d y sin borrar los demas archivos y directorios
+
+	rm d?* (o rm d*)
+
+como seleccionar los archivos que empezaban por una mayuscula o minuscula seguida de lo que sea despues de un . y terminado en un digito
+
+	ls -l [a-zA-Z].*[0-9]
