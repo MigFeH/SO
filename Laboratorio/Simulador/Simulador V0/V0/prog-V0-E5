@@ -1,0 +1,15 @@
+13 intrucciones  // Tamanio del programa en posiciones de memoria
+ADD 10 0 // contador del numero de iteraciones del bucle
+WRITE 127 // guardamos el valor del contador en la posicion de memoria 127
+ADD 1 0
+WRITE 128
+/// INICIO DEL BUCLE
+READ 128 // recogemos el valor
+SHIFT -1 // siguiente potencia
+WRITE 128 // almacenamos el valor
+READ 127 // recogemos el contador
+INC -1 // decrementamos contador
+ZJUMP 3 // contador == 0 => bucle finalizado
+WRITE 127 // guardamos contador
+JUMP -7 // al inicio del bucle
+HALT

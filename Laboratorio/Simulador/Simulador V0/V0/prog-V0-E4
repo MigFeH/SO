@@ -1,0 +1,12 @@
+11 intrucciones  // Tamanio del programa en posiciones de memoria
+ADD 21 0 // valor inicial para el registro acumulador
+INC 1 // aumentamos el valor del registro acumulador para tener el valor del primer par del rango
+WRITE 122 // almacenamos el valor del registro acumulador en la posicion de memoria 122
+WRITE 121 // almacenamos el valor del registro acumulador (almacena copia)
+INC -42 // hacemos "tope" con el 42 ya que sera el ultimo par dentro del rango
+ZJUMP 5 // el valor del registro acumulador era 42
+READ 121 // recuperamos el valor original del registro acumulador
+MEMADD 2 122
+WRITE 122 // almacenamos el par en la posicion 122
+JUMP -6 // saltar seis posiciones de memoria hacia atras
+HALT
